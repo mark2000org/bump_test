@@ -17,6 +17,4 @@ while IFS= read -r version || [[ -n "$version" ]]; do
     fi
 done < $1
 
-echo "$updated_version" > $1.tmp
-mv $1.tmp $1
-rm $1.tmp
+echo "$updated_version" > $1
