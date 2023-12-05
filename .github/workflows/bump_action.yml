@@ -15,8 +15,9 @@ jobs:
         - name: Bump beta version
           working-directory: ./
           run: ./.github/workflows/bump_version.sh ./package version.txt
-        - name: Commit and push changes
-          uses: devops-infra/action-commit-push@master
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            commit_message: [AUTO] Bump beta version
+        - name: Commit version
+          run: |
+            git config --global user.name 'Test Bot'
+            git config --global user.email 'test-bot@users.noreply.github.com'
+            git commit -am "Automated report"
+            git push
