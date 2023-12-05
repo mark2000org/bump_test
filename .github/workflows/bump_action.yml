@@ -1,23 +1,25 @@
-# Remember to set workflow permission to read and write
+# Remember to set workflow permission to read and write!
 
 on:
     pull_request:
         types:
             - closed
         branches:
-            - main
+            - main # Set this to development branch
 
 jobs:
     if_merged:
         if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
         steps:
-        - name: Bump beta version
+        - name: Pull repo
           uses: actions/checkout@v2
           with:
-            ref: main
+            ref: main # Set this to development branch
+        - name: Bump beta version
+          run: ./.github/workflows/bumper.sh ./package/version.txt # Set this script and version file directories
+        - name: Commit and push
           run: |
-              ./.github/workflows/bumper.sh ./package/version.txt
               git config user.name github-actions
               git config user.email github-actions@github.com
               git commit -a -m "[AUTO] Bump beta version number"
