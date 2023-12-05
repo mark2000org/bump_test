@@ -1,3 +1,5 @@
+# Remember to set workflow permission to read and write
+
 on:
     pull_request:
         types:
