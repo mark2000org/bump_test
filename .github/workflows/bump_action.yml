@@ -2,11 +2,21 @@ on:
     pull_request:
         types:
             - closed
+        branches:
+            - develop
 
 jobs:
     if_merged:
         if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
         steps:
-        - run: |
-            echo "This is a test"
+        - name: Checkout repository
+          uses: actions/checkout@v2
+        - name: Bump beta version
+          working-directory: ./
+          run: ./.github/workflows/bump_version.sh ./package version.txt
+        - name: Commit and push changes
+          uses: devops-infra/action-commit-push@master
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            commit_message: [AUTO] Bump beta version
