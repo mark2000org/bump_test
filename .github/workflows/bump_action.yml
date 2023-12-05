@@ -12,7 +12,7 @@ jobs:
           uses: actions/checkout@v2
         - name: Bump beta version
           working-directory: ./
-          run: ./.github/workflows/bumper.sh ./package version.txt
+          run: ./.github/workflows/bumper.sh ./package/version.txt
         - name: Commit version
           run: |
             git config --global user.name 'Test Bot'
