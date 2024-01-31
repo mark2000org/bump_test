@@ -1,10 +1,11 @@
 # Remember to set workflow permission to read and write!
 
-
 on:
     pull_request:
+        types:
+            - closed
         branches:
-            - main # Set this to development branch
+            - main
 
 jobs:
     on_merge:
