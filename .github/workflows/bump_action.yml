@@ -2,13 +2,13 @@
 
 
 on:
-    merge_group:
-        # branches:
-        #       - main # Set this to development branch
+    pull_request:
+        branches:
+            - main # Set this to development branch
 
 jobs:
     on_merge:
-        # if: github.event.pull_request.merged == true
+        if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
         steps:
         - name: Pull repo
