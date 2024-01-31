@@ -3,8 +3,8 @@
 
 on:
     merge_group:
-        branches:
-              - main # Set this to development branch
+        # branches:
+        #       - main # Set this to development branch
 
 jobs:
     on_merge:
