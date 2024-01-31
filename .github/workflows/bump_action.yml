@@ -15,7 +15,7 @@ jobs:
         - name: Pull repo
           uses: actions/checkout@v2
           with:
-            ref: $GITHUB_HEAD_REF # Set this to development branch
+            ref: main
         - name: Bump beta version
           run: ./.github/workflows/bumper.sh ./package/version.txt # Set this script and version file directories
         - name: Commit and push
@@ -23,5 +23,5 @@ jobs:
               git config user.name github-actions
               git config user.email github-actions@github.com
               git commit -a -m "[AUTO] Bump beta version number"
-              git push
+              git push -f
     
