@@ -1,0 +1,10 @@
+name: Commit Checks
+
+on: [pull_request]
+
+jobs:
+  isort:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: isort/isort-action@v1
